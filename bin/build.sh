@@ -14,12 +14,12 @@ tmp_dir="${root_dir}/tmp"
 
 rm -rf "${tmp_dir}" && mkdir -p "${tmp_dir}"
 
-curl -Lso "${tmp_dir}/traccar.tar.gz" "https://github.com/tananaev/traccar/archive/v${version}.tar.gz"
+curl -Ls "https://github.com/tananaev/traccar/archive/v${version}.tar.gz" -o "${tmp_dir}/traccar.tar.gz"
 tar -xzf "${tmp_dir}/traccar.tar.gz" -C "${tmp_dir}"
 mv "${tmp_dir}/traccar-${version}" "${tmp_dir}/traccar"
 mvn package -f "${tmp_dir}/traccar"
 
-curl -Lso "${tmp_dir}/traccar-web.tar.gz" "https://github.com/tananaev/traccar-web/archive/v${version}.tar.gz"
+curl -Ls "https://github.com/tananaev/traccar-web/archive/v${version}.tar.gz" -o "${tmp_dir}/traccar-web.tar.gz"
 tar -xzf "${tmp_dir}/traccar-web.tar.gz" -C "${tmp_dir}"
 mv "${tmp_dir}/traccar-web-${version}" "${tmp_dir}/traccar-web"
 
