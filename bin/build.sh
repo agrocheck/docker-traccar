@@ -25,8 +25,7 @@ mv "${tmp_dir}/traccar-web-${version}" "${tmp_dir}/traccar-web"
 
 rm -rf "${build_dir}" && mkdir -p "${build_dir}"
 
-cp -r "${src_dir}/traccar.xml" \
-      "${tmp_dir}/traccar/schema" \
+cp -r "${tmp_dir}/traccar/schema" \
       "${tmp_dir}/traccar/setup/default.xml" \
       "${tmp_dir}/traccar/target/lib" \
       "${tmp_dir}/traccar/target/tracker-server.jar" \
