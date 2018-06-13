@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-version=3.15-1
+version=3.15-2
 
 which docker > /dev/null 2>&1 || { echo >&2 "Docker not found"; exit 1; }
 which mvn > /dev/null 2>&1 || { echo >&2 "Maven not found"; exit 1; }
@@ -22,6 +22,7 @@ mvn package -f "${tmp_dir}/traccar"
 curl -Ls "https://github.com/tananaev/traccar-web/archive/v${version}.tar.gz" -o "${tmp_dir}/traccar-web.tar.gz"
 tar -xzf "${tmp_dir}/traccar-web.tar.gz" -C "${tmp_dir}"
 mv "${tmp_dir}/traccar-web-${version}" "${tmp_dir}/traccar-web"
+"${tmp_dir}/traccar-web/tools/minify.sh"
 
 rm -rf "${build_dir}" && mkdir -p "${build_dir}"
 
