@@ -37,4 +37,4 @@ cp -a "${tmp_dir}/traccar/schema" \
       "${build_dir}"
 
 docker build -t "agrocheck/traccar:${version}" "${root_dir}"
-echo "Execute ${bin_dir}/run.sh to run Traccar locally"
+echo "Run ${bin_dir}/run.sh to execute Traccar locally"
