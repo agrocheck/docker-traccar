@@ -2,7 +2,7 @@
 set -euo pipefail
 
 port=8080
-version=3.15
+version=3.15-1
 
 # Expose other ports by adding -p {host_port}:{container_port} as needed
 docker run -d -p "${port}":80 "agrocheck/traccar:${version}" java -jar tracker-server.jar traccar.xml
