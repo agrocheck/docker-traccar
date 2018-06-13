@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# TODO: get dynamically
 version=3.15
 
 which docker > /dev/null 2>&1 || { echo >&2 "Docker not found"; exit 1; }
 which mvn > /dev/null 2>&1 || { echo >&2 "Maven not found"; exit 1; }
 
 root_dir="$(dirname "$(readlink -f "${0}")")/.."
+bin_dir="${root_dir}/bin"
 build_dir="${root_dir}/build"
 src_dir="${root_dir}/src"
 tmp_dir="${root_dir}/tmp"
@@ -25,7 +25,7 @@ mv "${tmp_dir}/traccar-web-${version}" "${tmp_dir}/traccar-web"
 
 rm -rf "${build_dir}" && mkdir -p "${build_dir}"
 
-cp -r "${tmp_dir}/traccar/schema" \
+cp -a "${tmp_dir}/traccar/schema" \
       "${tmp_dir}/traccar/setup/default.xml" \
       "${tmp_dir}/traccar/target/lib" \
       "${tmp_dir}/traccar/target/tracker-server.jar" \
@@ -33,4 +33,8 @@ cp -r "${tmp_dir}/traccar/schema" \
       "${tmp_dir}/traccar-web/web" \
       "${build_dir}"
 
+cp -a "${src_dir}/." "${build_dir}"
+
 docker build -t "agrocheck/traccar:${version}" "${root_dir}"
+
+echo "Execute ${bin_dir}/run.sh to run Traccar locally"
