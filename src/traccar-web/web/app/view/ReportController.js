@@ -79,8 +79,7 @@ Ext.define('Traccar.view.ReportController', {
 
             // These attributes will be visible by default
             switch (attribute.get('key')) {
-              case 'alarm':
-              case 'event': {
+              case 'alarm': {
                 hidden = false;
                 break;
               }
@@ -470,7 +469,8 @@ Ext.define('Traccar.view.ReportController', {
     }, {
         text: Strings.positionValid,
         dataIndex: 'valid',
-        renderer: Traccar.AttributeFormatter.getFormatter('valid')
+        renderer: Traccar.AttributeFormatter.getFormatter('valid'),
+        hidden: true
     }, {
         text: Strings.positionFixTime,
         dataIndex: 'fixTime',
@@ -479,15 +479,18 @@ Ext.define('Traccar.view.ReportController', {
     }, {
         text: Strings.positionLatitude,
         dataIndex: 'latitude',
-        renderer: Traccar.AttributeFormatter.getFormatter('latitude')
+        renderer: Traccar.AttributeFormatter.getFormatter('latitude'),
+        hidden: true
     }, {
         text: Strings.positionLongitude,
         dataIndex: 'longitude',
-        renderer: Traccar.AttributeFormatter.getFormatter('longitude')
+        renderer: Traccar.AttributeFormatter.getFormatter('longitude'),
+        hidden: true
     }, {
         text: Strings.positionAltitude,
         dataIndex: 'altitude',
-        renderer: Traccar.AttributeFormatter.getFormatter('altitude')
+        renderer: Traccar.AttributeFormatter.getFormatter('altitude'),
+        hidden: true
     }, {
         text: Strings.positionSpeed,
         dataIndex: 'speed',
@@ -503,7 +506,8 @@ Ext.define('Traccar.view.ReportController', {
                     Strings.stateShowAddress + '</a>';
             }
             return Traccar.AttributeFormatter.getFormatter('address')(value);
-        }
+        },
+        hidden: true
     }],
 
     eventsColumns: [{

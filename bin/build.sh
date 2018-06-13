@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-version=3.15-3
+version=3.15-4
 
 which docker > /dev/null 2>&1 || { echo >&2 "Docker not found"; exit 1; }
 which mvn > /dev/null 2>&1 || { echo >&2 "Maven not found"; exit 1; }
